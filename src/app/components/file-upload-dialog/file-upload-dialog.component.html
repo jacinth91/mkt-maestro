@@ -1,0 +1,40 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '500px' }"
+  header="Upload Files"
+  [contentStyle]="{ background: '#333', color: '#fff' }"
+>
+  <div class="p-fluid">
+    <p-fileUpload
+      name="demo[]"
+      url="YOUR_UPLOAD_URL"
+      mode="advanced"
+      [auto]="false"
+      chooseLabel="Select Files"
+      uploadLabel="Upload"
+      cancelLabel="Cancel"
+      [customUpload]="true"
+      (uploadHandler)="onUpload($event)"
+      (onSelect)="onFileSelect($event)"
+    >
+    </p-fileUpload>
+    <div
+      class="drag-drop-area"
+      (dragover)="onDragOver($event)"
+      (drop)="onDrop($event)"
+      (dragleave)="onDragLeave($event)"
+    >
+      <p>Drag and drop files here to upload</p>
+    </div>
+  </div>
+  <p-footer>
+    <button
+      pButton
+      type="button"
+      label="Close"
+      icon="pi pi-times"
+      (click)="hideDialog()"
+    ></button>
+  </p-footer>
+</p-dialog>
